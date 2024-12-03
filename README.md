@@ -106,7 +106,6 @@ Pour déployer sur un serveur de production :
    ## Auteurs
 
     Faustin AGOHOUNDJE et KETOUNOU Elisée
-<<<<<<< HEAD
     [Votre GitHub](https://github.com/Kcfaustin)
     
 =======
