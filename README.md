@@ -106,10 +106,6 @@ Pour déployer sur un serveur de production :
    ## Auteurs
 
     Faustin AGOHOUNDJE et KETOUNOU Elisée
-    [Votre GitHub](https://github.com/Kcfaustin)
     
-=======
-
->>>>>>> 871154c (Mise à jour du fichier README.md)
    ## Licence
     Ce projet est sous licence MIT.
