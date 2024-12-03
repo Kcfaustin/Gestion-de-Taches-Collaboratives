@@ -17,7 +17,8 @@ Ce projet est une application web construite avec Laravel, permettant :
   - Accéder aux statistiques globales.  
 
 - **Utilisateurs** :  
-  - Consulter les projets et tâches assignés.  
+  - Gérer les projets et les tâches.
+  - Consulter les projets et tâches assignés.
   - Mettre à jour le statut des tâches assignées.  
   - Visualiser leurs statistiques personnelles.  
 
@@ -99,7 +100,7 @@ Pour déployer sur un serveur de production :
 
    ## Auteurs
 
-    Faustin AGOHOUNDJE et KETOUNOU Elisée
+    Faustin AGOHOUNDJE
     [Votre GitHub](https://github.com/Kcfaustin)
     
    ## Licence
