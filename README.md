@@ -24,7 +24,8 @@ Ce projet est une application web construite avec Laravel, permettant :
   - Gérer les projets et les tâches.
   - Consulter les projets et tâches assignés.
   - Mettre à jour le statut des tâches assignées.  
-  - Visualiser leurs statistiques personnelles.  
+  - Visualiser leurs statistiques personnelles. 
+  - Les utilisateurs reçoivent une notification lorsqu’une tâche leur est assignée. 
 
 - **Gestion des Projets et Tâches** :  
   - CRUD pour les projets et tâches.  
@@ -45,31 +46,31 @@ Ce projet est une application web construite avec Laravel, permettant :
 1. Clonez ce dépôt dans votre environnement local :  
    ```bash
    git clone https://github.com/Kcfaustin/Gestion-de-Taches-Collaboratives.git
-   cd votre-repo
+   cd Gestion-de-Taches-Collaboratives
 
 2. Installez les dépendances :
 
-    composer install
-    npm install
-    npm run dev
+    - composer install
+    - npm install
+    - npm run dev
 
 3. Configurez l'environnement :
     Copiez le fichier .env.example et renommez-le en .env.
     Modifiez les valeurs pour correspondre à votre configuration (base de données, mail, etc.) :
 
-    cp .env.example .env
-    php artisan key:generate
+    - cp .env.example .env
+    - php artisan key:generate
 
 4. Configurez la base de données :
 
-    Créez une base de données.
-    Modifiez les paramètres dans .env.
-    Appliquez les migrations et les seeders :
-    php artisan migrate --seed
+    - Créez une base de données.
+    - Modifiez les paramètres dans .env.
+    - Appliquez les migrations et les seeders :
+    - php artisan migrate --seed
 
 5. Lancez le serveur de développement :
 
-    php artisan serve
+    - php artisan serve
 
 6. Accédez à l'application dans votre navigateur :
 
@@ -105,7 +106,11 @@ Pour déployer sur un serveur de production :
    ## Auteurs
 
     Faustin AGOHOUNDJE et KETOUNOU Elisée
+<<<<<<< HEAD
     [Votre GitHub](https://github.com/Kcfaustin)
     
+=======
+
+>>>>>>> 871154c (Mise à jour du fichier README.md)
    ## Licence
     Ce projet est sous licence MIT.
