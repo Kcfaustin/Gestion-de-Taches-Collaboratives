@@ -100,7 +100,7 @@ Pour déployer sur un serveur de production :
 
    ## Auteurs
 
-    Faustin AGOHOUNDJE
+    Faustin AGOHOUNDJE et KETOUNOU Elisée
     [Votre GitHub](https://github.com/Kcfaustin)
     
    ## Licence
