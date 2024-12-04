@@ -16,8 +16,8 @@ Ce projet est une application web construite avec Laravel, permettant :
 
 ## Fonctionnalités Principales
 - **Administrateurs** :  
-  - Gérer les utilisateurs (ajouter, modifier, supprimer).  
-  - Visualiser et gérer tous les projets et tâches.  
+  - Gérer les utilisateurs.  
+  - Visualiser et gérer tous les projets.  
   - Accéder aux statistiques globales.  
 
 - **Utilisateurs** :  
@@ -55,8 +55,8 @@ Ce projet est une application web construite avec Laravel, permettant :
     - npm run dev
 
 3. Configurez l'environnement :
-    Copiez le fichier .env.example et renommez-le en .env.
-    Modifiez les valeurs pour correspondre à votre configuration (base de données, mail, etc.) :
+    - Copiez le fichier .env.example et renommez-le en .env.
+    - Modifiez les valeurs pour correspondre à votre configuration (base de données, mail, etc.) :
 
     - cp .env.example .env
     - php artisan key:generate
