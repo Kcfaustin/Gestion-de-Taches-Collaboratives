@@ -25,10 +25,15 @@ class TaskAssigned extends Notification
 
     public function toMail($notifiable) {
         return (new MailMessage)
-                    ->line("Une tâche vous a été assignée : {$this->task->title}")
-                    ->action('Voir la tâche', url('/tasks/'.$this->task->id))
-                    ->line('Merci de votre attention.');
-    }
+                    ->subject('Nouvelle tâche assignée : ' . $this->task->title)
+                    ->greeting('Bonjour ' . $notifiable->name . ',')
+                    ->line('Une nouvelle tâche vous a été assignée :')
+                    ->line('**Titre** : ' . $this->task->title)
+                    ->line('**Description** : ' . $this->task->description)
+                    ->line('**Priorité** : ' . ucfirst($this->task->priority))
+                    ->action('Voir la tâche', route('tasks.show', $this->task->id))
+                    ->line('Merci de votre implication !');
+            }
 
     // Notification pour les bases de données
     public function toDatabase($notifiable)

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
@@ -17,6 +18,24 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+
+// Route pour demander une nouvelle vérification
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+// Route pour vérifier l'email via un lien envoyé
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill(); // Vérifie l'email
+    return redirect('/dashboard')->with('success', 'Votre email a été vérifié avec succès.');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+// Route pour renvoyer un email de vérification
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', 'Un nouvel email de vérification a été envoyé.');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
 Route::get('/notifications/mark-as-read/{id}', function ($id) {
     $notification = auth()->user()->notifications->find($id);
