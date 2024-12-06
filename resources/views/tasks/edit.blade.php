@@ -26,8 +26,9 @@
         <div class="form-group">
             <label for="status">Statut</label>
             <select name="status" id="status" class="form-control">
-                <option value="en cours" {{ $task->status == 'en cours' ? 'selected' : '' }}>En cours</option>
-                <option value="terminé" {{ $task->status == 'terminé' ? 'selected' : '' }}>Terminé</option>
+                <option value="non commencé" {{ old('status', $task->status) == 'non commencé' ? 'selected' : '' }}>Non commencé</option>
+                <option value="en cours" {{ old('status', $task->status) == 'en cours' ? 'selected' : '' }}>En cours</option>
+                <option value="terminé" {{ old('status', $task->status) == 'terminé' ? 'selected' : '' }}>Terminé</option>
             </select>
         </div>
         @else

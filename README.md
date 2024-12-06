@@ -105,7 +105,7 @@ Pour déployer sur un serveur de production :
 
    ## Auteurs
 
-    Faustin AGOHOUNDJE et KETOUNOU Elisée
+    Faustin AGOHOUNDJE 
     
    ## Licence
     Ce projet est sous licence MIT.

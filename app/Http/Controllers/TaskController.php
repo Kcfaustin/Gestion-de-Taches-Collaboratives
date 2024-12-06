@@ -82,7 +82,7 @@ class TaskController extends Controller
     {
 
         $validate = $request->validate([
-            'status' => 'required|in:en cours,terminé',
+            'status' => 'required|in:non commencé,en cours,terminé',
         ]);
 
         // Si l'utilisateur est assigné à la tâche
