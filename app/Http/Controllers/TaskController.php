@@ -81,10 +81,14 @@ class TaskController extends Controller
     public function update(Request $request, Project $project, Task $task)
     {
 
+        $validate = $request->validate([
+            'status' => 'required|in:en cours,terminé',
+        ]);
+
         // Si l'utilisateur est assigné à la tâche
         if ($task->assigned_to == Auth::id()) {
              // Mise à jour uniquement du statut
-            $task->update(['status' => $validated['status']]);
+            $task->update(['status' => $validate['status']]);
 
             return redirect()->route('dashboard.tasks', $project)->with('success', 'Statut de la tâche mis à jour avec succès.');
         }
