@@ -21,9 +21,47 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(), // Email vérifié automatiquement
         ]);
 
-        // Créer des utilisateurs normaux avec usertype = user
-        \App\Models\User::factory(5)->create([
-            'usertype' => 'user',
-        ]);
+        // Créer des utilisateurs normaux avec usertype = user (sans Faker pour la production)
+        $users = [
+            [
+                'name' => 'Jean Dupont',
+                'email' => 'jean.dupont@example.com',
+                'password' => Hash::make('password123'),
+                'usertype' => 'user',
+                'email_verified_at' => now(),
+            ],
+            [
+                'name' => 'Marie Martin',
+                'email' => 'marie.martin@example.com',
+                'password' => Hash::make('password123'),
+                'usertype' => 'user',
+                'email_verified_at' => now(),
+            ],
+            [
+                'name' => 'Pierre Durand',
+                'email' => 'pierre.durand@example.com',
+                'password' => Hash::make('password123'),
+                'usertype' => 'user',
+                'email_verified_at' => now(),
+            ],
+            [
+                'name' => 'Sophie Bernard',
+                'email' => 'sophie.bernard@example.com',
+                'password' => Hash::make('password123'),
+                'usertype' => 'user',
+                'email_verified_at' => now(),
+            ],
+            [
+                'name' => 'Lucas Moreau',
+                'email' => 'lucas.moreau@example.com',
+                'password' => Hash::make('password123'),
+                'usertype' => 'user',
+                'email_verified_at' => now(),
+            ],
+        ];
+
+        foreach ($users as $userData) {
+            User::create($userData);
+        }
     }
 }
