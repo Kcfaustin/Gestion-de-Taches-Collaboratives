@@ -53,7 +53,7 @@ class HomeController extends Controller
     // Liste des utilisateurs
     public function listUsers()
     {
-        $users = User::withCount('projects')->get(); // Chargement des utilisateurs avec leur nombre de projets
+        $users = User::withCount('projects')->paginate(10); // Pagination avec 10 utilisateurs par page
         return view('admin.users.index', compact('users'));
     }
 
@@ -67,11 +67,34 @@ class HomeController extends Controller
 
     public function listProjects()
     {
-        // Exemple : Récupérer les projets depuis la base de données
-        $projects = Project::all();
+        // Récupérer les projets avec pagination
+        $projects = Project::with('user')->paginate(10); // Pagination avec 10 projets par page
 
         // Retourner la vue avec les projets
         return view('admin.projects.index', compact('projects'));
+    }
+
+    // Afficher le formulaire de modification d'un utilisateur
+    public function editUser($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.users.edit', compact('user'));
+    }
+
+    // Mettre à jour un utilisateur
+    public function updateUser(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'usertype' => 'required|in:admin,user',
+        ]);
+
+        $user->update($request->all());
+
+        return redirect()->route('admin.users.index')->with('success', 'Utilisateur mis à jour avec succès.');
     }
 
     // Suppression d'un utilisateur

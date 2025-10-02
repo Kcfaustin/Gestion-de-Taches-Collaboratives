@@ -47,6 +47,11 @@ Route::middleware('auth')->group(function () {
         ->middleware('throttle:6,1')
         ->name('verification.send');
 
+    // Redirect GET requests to the proper verification notice page
+    Route::get('email/verification-notification', function () {
+        return redirect()->route('verification.notice');
+    })->middleware('auth')->name('verification.redirect');
+
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
         ->name('password.confirm');
 

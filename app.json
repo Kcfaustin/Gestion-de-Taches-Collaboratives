@@ -1,0 +1,45 @@
+{
+  "name": "Gestion de Tâches Laravel",
+  "description": "Application de gestion de tâches et projets développée avec Laravel",
+  "repository": "https://github.com/votre-username/gestion-taches-laravel",
+  "logo": "https://laravel.com/img/logomark.min.svg",
+  "keywords": ["laravel", "php", "gestion-taches", "projets"],
+  "success_url": "/",
+  "scripts": {
+    "postdeploy": "php artisan migrate --force && php artisan db:seed"
+  },
+  "env": {
+    "APP_KEY": {
+      "description": "Clé de chiffrement de l'application Laravel",
+      "generator": "key"
+    },
+    "APP_ENV": {
+      "description": "Environnement de l'application",
+      "value": "production"
+    },
+    "APP_DEBUG": {
+      "description": "Mode debug",
+      "value": "false"
+    },
+    "DB_CONNECTION": {
+      "description": "Type de base de données",
+      "value": "mysql"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [
+    {
+      "plan": "jawsdb-maria:kitefin"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ]
+}

@@ -18,10 +18,10 @@ class TaskController extends Controller
     {
         $tasks = Task::whereHas('project', function ($query) {
             $query->where('user_id', auth()->id());
-        })->get();
+        })->paginate(10); // Pagination avec 10 tâches par page
 
         // Tâches assignées à l'utilisateur
-        $assignedTasks = Task::where('assigned_to', auth()->id())->get();
+        $assignedTasks = Task::where('assigned_to', auth()->id())->paginate(10); // Pagination avec 10 tâches par page
 
         return view('dashboard.tasks', compact('tasks', 'assignedTasks'));
     }

@@ -31,12 +31,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     return redirect('/dashboard')->with('success', 'Votre email a été vérifié avec succès.');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-// Route pour renvoyer un email de vérification
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-    return back()->with('message', 'Un nouvel email de vérification a été envoyé.');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
-
 Route::get('/notifications/mark-as-read/{id}', function ($id) {
     $notification = auth()->user()->notifications->find($id);
     if ($notification) {
@@ -58,6 +52,7 @@ Route::middleware('auth', 'verified')->group(function () {
 
     // Tableau de Bord affichage User
     Route::get('dashboard/projects', [ProjectController::class, 'index'])->name('dashboard.projects');
+    Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');  // Route manquante ajoutée
     Route::get('dashboard/projects/create', [ProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
 
@@ -66,6 +61,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::put('projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
 
     Route::get('dashboard/tasks', [TaskController::class, 'index'])->name('dashboard.tasks');
+    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');  // Route manquante ajoutée
 
     Route::get('dashboard/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
     Route::post('dashboard/tasks/', [TaskController::class, 'store'])->name('tasks.store');
@@ -85,6 +81,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::get('admin/users', [HomeController::class, 'listUsers'])->name('admin.users.index');
+    Route::get('admin/users/{id}/edit', [HomeController::class, 'editUser'])->name('admin.users.edit');
+    Route::put('admin/users/{id}', [HomeController::class, 'updateUser'])->name('admin.users.update');
     Route::get('/admin/projects/{id}', [HomeController::class, 'listUserProjects'])->name('admin.users.projects');
     Route::delete('admin/users/{id}', [HomeController::class, 'deleteUser'])->name('admin.users.destroy');
 

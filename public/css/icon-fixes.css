@@ -1,0 +1,376 @@
+/* Corrections spécifiques pour la visibilité des icônes et du texte */
+
+/* Bootstrap Icons - Force la visibilité */
+.bi {
+    display: inline-block !important;
+    font-family: 'bootstrap-icons' !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: inherit !important;
+}
+
+/* Statistiques - Amélioration de la visibilité */
+.badge {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-weight: 600 !important;
+}
+
+.badge.bg-white {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+}
+
+.badge.bg-white i {
+    color: #1a1a1a !important;
+    opacity: 1 !important;
+}
+
+/* Statistiques counter - Force la visibilité des icônes */
+.stats-counter .bg-white {
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+}
+
+.stats-counter .bg-white i {
+    opacity: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.text-primary {
+    color: #0d6efd !important;
+}
+
+.text-success {
+    color: #198754 !important;
+}
+
+.text-info {
+    color: #0dcaf0 !important;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+/* Amélioration du contraste des textes */
+.text-white {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.95) !important;
+    opacity: 1 !important;
+}
+
+.display-4 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Navbar - amélioration des icônes */
+.navbar .bi {
+    color: inherit !important;
+    opacity: 1 !important;
+    margin-right: 0.25rem;
+}
+
+.nav-link .bi {
+    color: #f8f9fa !important;
+    opacity: 1 !important;
+}
+
+.btn .bi {
+    color: inherit !important;
+    opacity: 1 !important;
+}
+
+/* Auth pages - amélioration des icônes */
+.bg-blue-100 i,
+.bg-green-100 i,
+.bg-orange-100 i {
+    color: inherit !important;
+    opacity: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Labels avec icônes */
+label i {
+    color: inherit !important;
+    opacity: 1 !important;
+    margin-right: 0.25rem;
+}
+
+/* Boutons avec icônes */
+button i,
+.btn i,
+a.btn i {
+    color: inherit !important;
+    opacity: 1 !important;
+    margin-right: 0.5rem;
+}
+
+/* Messages d'erreur avec icônes */
+.text-red-600 i {
+    color: #dc2626 !important;
+    opacity: 1 !important;
+}
+
+/* Fix pour les dropdowns et boutons cliquables */
+.dropdown-menu {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0,0,0,0.15) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+    z-index: 1050 !important;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #212529 !important;
+    background-color: transparent !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #f8f9fa !important;
+    color: #1e2125 !important;
+}
+
+.dropdown-menu .dropdown-item i {
+    color: inherit !important;
+    opacity: 1 !important;
+}
+
+/* Boutons dropdown cliquables - FORCE ABSOLUE */
+.dropdown-toggle {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    position: relative !important;
+    user-select: none !important;
+    background: transparent !important;
+    border: 1px solid !important;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:active {
+    outline: none !important;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25) !important;
+}
+
+/* Actions rapides et notifications - IDs spécifiques */
+#actionsDropdown,
+#notificationsDropdown {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 100 !important;
+    display: inline-block !important;
+    background: none !important;
+    outline: none !important;
+}
+
+#actionsDropdown:hover,
+#notificationsDropdown:hover {
+    transform: translateY(-1px) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Actions rapides et notifications - Force cliquabilité */
+.btn {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+.btn:hover {
+    transform: translateY(-1px) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Fix spécifique pour les boutons du dashboard */
+.btn-outline-primary,
+.btn-outline-secondary {
+    border: 2px solid !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+    color: #ffffff !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #ffffff !important;
+}
+
+/* Footer icons */
+.footer i,
+footer i {
+    color: inherit !important;
+    opacity: 1 !important;
+}
+
+/* Cards icons */
+.card i {
+    color: inherit !important;
+    opacity: 1 !important;
+}
+
+/* Force visibility for all icons */
+i[class*="bi-"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    font-family: 'bootstrap-icons' !important;
+}
+
+/* Hover effects pour les icônes */
+.hover-opacity-100:hover {
+    opacity: 1 !important;
+}
+
+/* Animation counter pour les statistiques */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stats-counter {
+    animation: countUp 0.8s ease-out;
+}
+
+/* Amélioration du contraste général */
+.bg-dark {
+    background-color: #1a1a1a !important;
+}
+
+.text-light {
+    color: #f8f9fa !important;
+}
+
+/* Fix pour les cartes de statistiques */
+.stats-counter .bg-white.rounded-circle {
+    background-color: #ffffff !important;
+    border: 2px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Shadow enhancements */
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Dashboard specific fixes */
+.hover-bg-light:hover {
+    background-color: #f8f9fa !important;
+    transition: background-color 0.3s ease !important;
+}
+
+/* Ensure dropdown menus appear on top */
+.dropdown {
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+.dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    z-index: 1050 !important;
+    display: none !important;
+    min-width: 10rem !important;
+    padding: 0.5rem 0 !important;
+    margin: 0.125rem 0 0 !important;
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0,0,0,.15) !important;
+    border-radius: 0.375rem !important;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+.dropdown-menu.show {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    z-index: 1050 !important;
+}
+
+/* Specific dropdown positioning */
+.dropdown-menu-end {
+    right: 0 !important;
+    left: auto !important;
+}
+
+/* Fix Bootstrap dropdown functionality */
+.dropdown-toggle::after {
+    display: inline-block !important;
+    margin-left: 0.255em !important;
+    vertical-align: 0.255em !important;
+    content: "" !important;
+    border-top: 0.3em solid !important;
+    border-right: 0.3em solid transparent !important;
+    border-bottom: 0 !important;
+    border-left: 0.3em solid transparent !important;
+}
+
+/* Text visibility in dropdowns */
+.text-dark {
+    color: #212529 !important;
+}
+
+.hover-bg-light {
+    transition: all 0.3s ease !important;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem !important;
+    }
+
+    .stats-counter .bg-white {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .stats-counter .fs-2 {
+        font-size: 1.5rem !important;
+    }
+
+    .dropdown-menu {
+        min-width: 250px !important;
+    }
+
+    .btn-sm {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.875rem !important;
+    }
+}

@@ -11,8 +11,8 @@ class ProjectController extends Controller
     // Afficher tous les projets d'un utilisateur
     public function index()
     {
-        $projects = Project::with('tasks')->where('user_id', auth()->id())->get();
-        //$projects = auth()->user()->projects()->with('tasks')->get();
+        $projects = Project::with('tasks')->where('user_id', auth()->id())->paginate(6); // Pagination avec 6 projets par page
+        //$projects = auth()->user()->projects()->with('tasks')->paginate(6);
         return view('dashboard.projects', compact('projects'));
     }
 

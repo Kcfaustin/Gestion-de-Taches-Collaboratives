@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => Hash::make('password1234'),
             'usertype' => 'admin',
+            'email_verified_at' => now(), // Email vérifié automatiquement
         ]);
 
         // Créer des utilisateurs normaux avec usertype = user

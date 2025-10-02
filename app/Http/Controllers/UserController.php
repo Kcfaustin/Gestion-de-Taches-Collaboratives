@@ -10,7 +10,7 @@ class UserController extends Controller
     // Afficher tous les utilisateurs
     public function index()
     {
-        $users = User::with('projects')->get();
+        $users = User::with('projects')->paginate(10);
         return view('admin.users.index', compact('users'));
     }
 
