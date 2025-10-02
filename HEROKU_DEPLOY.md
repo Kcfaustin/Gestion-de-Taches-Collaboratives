@@ -5,6 +5,32 @@
 1. **Compte Heroku** : Créez un compte sur [heroku.com](https://heroku.com)
 2. **Heroku CLI** : Installez-le depuis [devcenter.heroku.com](https://devcenter.heroku.com/articles/heroku-cli)
 3. **Git** : Assurez-vous que Git est installé
+4. **Base de données Hostinger** : Créez une base de données MySQL sur Hostinger
+
+## 🗄️ Configuration de la base de données Hostinger
+
+### Étapes sur Hostinger :
+
+1. **Connectez-vous** à votre panneau Hostinger
+2. **Allez dans "Bases de données MySQL"**
+3. **Créez une nouvelle base de données** :
+   - Nom : `gestion_taches` (ou similaire)
+   - Utilisateur : Créez un utilisateur dédié
+   - Mot de passe : Générez un mot de passe fort
+4. **Notez les informations** :
+   - Hôte : `mysql.hostinger.com` (ou similaire)
+   - Port : `3306`
+   - Nom de la base : `u123456789_gestion_taches`
+   - Utilisateur : `u123456789_admin`
+   - Mot de passe : `votre_mot_de_passe`
+
+### Import des tables :
+
+Une fois déployé, exécutez les migrations :
+```bash
+heroku run php artisan migrate --force
+heroku run php artisan db:seed
+```
 
 ## 🔧 Installation Heroku CLI
 
@@ -45,19 +71,22 @@ heroku login
 
 2. **Créer l'application** :
 ```bash
-heroku create votre-nom-app
+heroku create gestiontache-app
 ```
 
-3. **Ajouter la base de données** :
+3. **Configurer les variables de base de données Hostinger** :
 ```bash
-heroku addons:create jawsdb-maria:kitefin
-```
-
-4. **Configurer les variables** :
-```bash
+# Variables de base
 heroku config:set APP_ENV=production
 heroku config:set APP_DEBUG=false
 heroku config:set DB_CONNECTION=mysql
+
+# Variables de base de données Hostinger (remplacez par vos vraies valeurs)
+heroku config:set DB_HOST=mysql.hostinger.com
+heroku config:set DB_PORT=3306
+heroku config:set DB_DATABASE=u123456789_gestion_taches
+heroku config:set DB_USERNAME=u123456789_admin
+heroku config:set DB_PASSWORD=votre_mot_de_passe
 ```
 
 5. **Déployer** :
@@ -100,8 +129,9 @@ heroku open
 ## 💰 Coûts
 
 - **Plan gratuit** : 550-1000 heures/mois
-- **Base de données** : JawsDB MariaDB (gratuit jusqu'à 5MB)
+- **Base de données** : MySQL Hostinger (votre propre base)
 - **Dyno** : Se met en veille après 30min d'inactivité
+- **Avantage** : Pas de limitation de taille de base de données
 
 ## 🆘 Dépannage
 

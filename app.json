@@ -24,6 +24,26 @@
     "DB_CONNECTION": {
       "description": "Type de base de données",
       "value": "mysql"
+    },
+    "DB_HOST": {
+      "description": "Hôte de la base de données Hostinger",
+      "value": "mysql.hostinger.com"
+    },
+    "DB_PORT": {
+      "description": "Port de la base de données",
+      "value": "3306"
+    },
+    "DB_DATABASE": {
+      "description": "Nom de la base de données",
+      "value": "u123456789_gestion_taches"
+    },
+    "DB_USERNAME": {
+      "description": "Nom d'utilisateur de la base de données",
+      "value": "u123456789_admin"
+    },
+    "DB_PASSWORD": {
+      "description": "Mot de passe de la base de données",
+      "value": "votre_mot_de_passe"
     }
   },
   "formation": {
@@ -32,11 +52,7 @@
       "size": "basic"
     }
   },
-  "addons": [
-    {
-      "plan": "jawsdb-maria:kitefin"
-    }
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/php"
