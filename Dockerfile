@@ -1,8 +1,17 @@
 # Utiliser l'image PHP officielle avec Composer
 FROM php:8.2-cli
 
+# Installer les dépendances système nécessaires
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # Installer les extensions PHP nécessaires
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_mysql zip gd
 
 # Installer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -17,7 +26,7 @@ WORKDIR /app
 # Copier les fichiers de l'application
 COPY . .
 
-# Installer les dépendances PHP
+# Installer les dépendances PHP (maintenant que les extensions sont installées)
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Exécuter les scripts post-installation
