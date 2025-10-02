@@ -35,8 +35,8 @@ RUN composer run-script post-autoload-dump
 # Installer les dépendances Node.js et compiler les assets
 RUN npm install && npm run build
 
-# Exposer le port
-EXPOSE 8000
+# Exposer le port Railway
+EXPOSE $PORT
 
 # Commande de démarrage avec migrations et seeding
-CMD ["sh", "-c", "php artisan migrate --force && php artisan db:seed && php artisan serve --host=0.0.0.0 --port=8000"]
+CMD ["sh", "-c", "php artisan migrate --force && php artisan db:seed && php artisan serve --host=0.0.0.0 --port=$PORT"]
