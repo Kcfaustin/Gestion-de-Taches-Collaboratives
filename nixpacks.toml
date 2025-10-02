@@ -9,8 +9,7 @@ cmds = [
 
 [phases.build]
 cmds = [
-    "composer install --no-dev --optimize-autoloader --no-scripts",
-    "composer run-script post-autoload-dump"
+    "composer install --no-dev --optimize-autoloader"
 ]
 
 [start]
