@@ -1,13 +1,12 @@
+# Ignore these files during Nixpacks build
 node_modules
 .git
-.gitignore
-README.md
 .env
-.env.example
-storage/app/*
+.env.local
+.env.production
+.env.staging
+storage/logs/*
 storage/framework/cache/*
 storage/framework/sessions/*
 storage/framework/views/*
-storage/logs/*
 bootstrap/cache/*
-!bootstrap/cache/.gitkeep
