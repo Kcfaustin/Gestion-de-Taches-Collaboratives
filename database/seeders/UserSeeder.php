@@ -12,14 +12,16 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        // Créer un administrateur
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password1234'),
-            'usertype' => 'admin',
-            'email_verified_at' => now(), // Email vérifié automatiquement
-        ]);
+        // Créer un administrateur s'il n'existe pas déjà
+        if (!User::where('email', 'admin@example.com')->exists()) {
+            User::create([
+                'name' => 'Admin User',
+                'email' => 'admin@example.com',
+                'password' => Hash::make('password1234'),
+                'usertype' => 'admin',
+                'email_verified_at' => now(), // Email vérifié automatiquement
+            ]);
+        }
 
         // Créer des utilisateurs normaux avec usertype = user (sans Faker pour la production)
         $users = [
@@ -61,7 +63,10 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $userData) {
-            User::create($userData);
+            // Créer l'utilisateur s'il n'existe pas déjà
+            if (!User::where('email', $userData['email'])->exists()) {
+                User::create($userData);
+            }
         }
     }
 }
