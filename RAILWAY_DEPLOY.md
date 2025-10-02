@@ -19,7 +19,7 @@ Railway va automatiquement :
 - ✅ Détecter que c'est un projet Laravel
 - ✅ Installer les dépendances PHP
 - ✅ Configurer le serveur web
-- ✅ Créer une base de données PostgreSQL
+- ✅ Utiliser votre base de données MySQL Hostinger
 
 ### 3. **Variables d'environnement :**
 Configurez ces variables dans Railway :
@@ -31,24 +31,21 @@ APP_KEY=base64:VOTRE_CLE_ICI
 APP_DEBUG=false
 APP_URL=https://votre-app.railway.app
 
-DB_CONNECTION=pgsql
-DB_HOST=postgres.railway.internal
-DB_PORT=5432
-DB_DATABASE=railway
-DB_USERNAME=postgres
-DB_PASSWORD=VOTRE_MOT_DE_PASSE
+# Configuration MySQL Hostinger
+DB_CONNECTION=mysql
+DB_HOST=srv1427.hstgr.io
+DB_PORT=3306
+DB_DATABASE=u320065801_gestiontache
+DB_USERNAME=u320065801_faustin14
+DB_PASSWORD=Evaluation2002
 
 CACHE_DRIVER=file
 SESSION_DRIVER=file
 QUEUE_CONNECTION=sync
 ```
 
-### 4. **Exécuter les migrations :**
-```bash
-# Dans le terminal Railway
-php artisan migrate --force
-php artisan db:seed
-```
+### 4. **Migrations automatiques :**
+Les migrations et seeders s'exécutent automatiquement au démarrage grâce à la configuration `nixpacks.toml`.
 
 ## 🌐 Accès à l'application
 
