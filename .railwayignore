@@ -1,20 +1,4 @@
-# Ignore composer files to prevent Heroku buildpack detection
+# Ignore files that trigger buildpack detection
 composer.json
 composer.lock
 vendor/
-
-# Ignore PHP files that might trigger buildpack detection
-*.php
-app/
-bootstrap/
-config/
-database/
-resources/
-routes/
-storage/
-tests/
-
-# Keep only what's needed for Docker
-Dockerfile
-.dockerignore
-railway.toml
