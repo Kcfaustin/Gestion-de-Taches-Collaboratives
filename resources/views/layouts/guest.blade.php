@@ -20,14 +20,123 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="{{ asset('css/icon-fixes.css') }}">
-        <link href="{{ asset('css/modern-theme.css') }}" rel="stylesheet">
+        <!-- Custom CSS - CDN fallback for production -->
+        @if(app()->environment('production'))
+            <style>
+                /* Critical CSS inline for production */
+                body { 
+                    font-family: 'Inter', 'Figtree', sans-serif;
+                    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                    min-height: 100vh;
+                }
+                .navbar {
+                    background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%) !important;
+                    backdrop-filter: blur(10px);
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                }
+                .navbar-brand {
+                    font-weight: 700 !important;
+                    font-size: 1.5rem !important;
+                    color: #ffffff !important;
+                }
+                .navbar-brand i {
+                    color: #0d6efd !important;
+                    margin-right: 0.5rem;
+                }
+                .nav-link {
+                    color: #f8f9fa !important;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    border-radius: 8px;
+                    margin: 0 0.25rem;
+                    padding: 0.5rem 1rem !important;
+                }
+                .nav-link:hover {
+                    background-color: rgba(255,255,255,0.1);
+                    color: #ffffff !important;
+                    transform: translateY(-1px);
+                }
+                .nav-link.active {
+                    background-color: rgba(13, 110, 253, 0.2);
+                    color: #0d6efd !important;
+                }
+                .auth-btn-login {
+                    border: 2px solid rgba(255,255,255,0.8) !important;
+                    color: #ffffff !important;
+                    background: transparent !important;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                    border-radius: 8px !important;
+                    padding: 0.5rem 1.25rem !important;
+                }
+                .auth-btn-login:hover {
+                    background-color: #ffffff !important;
+                    color: #1a1a1a !important;
+                    border-color: #ffffff !important;
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(255,255,255,0.2);
+                }
+                .auth-btn-register {
+                    background: linear-gradient(135deg, #0d6efd, #0b5ed7) !important;
+                    border: 2px solid transparent !important;
+                    color: #ffffff !important;
+                    font-weight: 600;
+                    transition: all 0.3s ease;
+                    border-radius: 8px !important;
+                    padding: 0.5rem 1.25rem !important;
+                }
+                .auth-btn-register:hover {
+                    background: linear-gradient(135deg, #0b5ed7, #0a58ca) !important;
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4);
+                    color: #ffffff !important;
+                }
+                .min-h-screen {
+                    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                    padding: 2rem 0;
+                }
+                .bi {
+                    display: inline-block !important;
+                    opacity: 1 !important;
+                    font-style: normal !important;
+                }
+            </style>
+        @else
+            <link rel="stylesheet" href="{{ asset('css/icon-fixes.css') }}">
+            <link href="{{ asset('css/modern-theme.css') }}" rel="stylesheet">
+        @endif
 
         <!-- Scripts -->
         @if(app()->environment('production'))
-            <link rel="stylesheet" href="{{ \App\Helpers\AssetHelper::getCssPath() }}">
-            <script type="module" src="{{ \App\Helpers\AssetHelper::getJsPath() }}"></script>
+            <!-- Fallback CSS - Try multiple paths -->
+            @if(file_exists(public_path('build/assets/app-Dydjg6F-.css')))
+                <link rel="stylesheet" href="{{ asset('build/assets/app-Dydjg6F-.css') }}">
+            @elseif(file_exists(public_path('build/assets/app.css')))
+                <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+            @elseif(file_exists(public_path('build/app.css')))
+                <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            @else
+                <!-- Inline critical CSS as fallback -->
+                <style>
+                    body { font-family: 'Inter', sans-serif; }
+                    .bg-gradient-to-br { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); }
+                    .min-h-screen { min-height: 100vh; }
+                    .navbar { background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%) !important; }
+                    .navbar-brand { font-weight: 700 !important; color: #ffffff !important; }
+                    .nav-link { color: #f8f9fa !important; font-weight: 500; }
+                    .auth-btn-login { border: 2px solid rgba(255,255,255,0.8) !important; color: #ffffff !important; }
+                    .auth-btn-register { background: linear-gradient(135deg, #0d6efd, #0b5ed7) !important; color: #ffffff !important; }
+                </style>
+            @endif
+            
+            <!-- Fallback JS - Try multiple paths -->
+            @if(file_exists(public_path('build/assets/js-K89dAo7v.js')))
+                <script type="module" src="{{ asset('build/assets/js-K89dAo7v.js') }}"></script>
+            @elseif(file_exists(public_path('build/assets/js.js')))
+                <script type="module" src="{{ asset('build/assets/js.js') }}"></script>
+            @elseif(file_exists(public_path('build/js.js')))
+                <script type="module" src="{{ asset('build/js.js') }}"></script>
+            @endif
         @else
             @vite(['resources/css/app.css', 'resources/js/app.js'])
         @endif

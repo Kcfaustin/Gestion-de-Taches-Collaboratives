@@ -1,10 +1,8 @@
 [phases.setup]
-nixPkgs = []
+nixPkgs = ["nodejs-18_x"]
 
 [phases.install]
 cmds = [
-    "curl -fsSL https://deb.nodesource.com/setup_18.x | bash -",
-    "apt-get install -y nodejs",
     "composer install --no-dev --optimize-autoloader",
     "npm ci"
 ]
@@ -15,13 +13,7 @@ cmds = [
     "php artisan config:cache",
     "php artisan route:cache",
     "php artisan view:cache",
-    "php artisan storage:link",
-    "ls -la public/build/",
-    "cp -r public/build/* public/",
-    "mkdir -p public/build/.vite",
-    "cp public/build/.vite/manifest.json public/build/.vite/",
-    "ls -la public/build/.vite/",
-    "chmod -R 755 public/build"
+    "php artisan storage:link"
 ]
 
 [start]
