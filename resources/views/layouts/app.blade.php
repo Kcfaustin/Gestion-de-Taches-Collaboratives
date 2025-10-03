@@ -19,19 +19,6 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         
-        <!-- Custom CSS -->
-        <link href="{{ asset('css/modern-theme.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/stats-cards-fix.css') }}" rel="stylesheet">
-
-        <!-- Custom Responsive CSS -->
-        <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-
-        <!-- Modern Professional Theme -->
-        <link href="{{ asset('css/modern-theme.css') }}" rel="stylesheet">
-
-        <!-- Icon fixes -->
-        <link href="{{ asset('css/icon-fixes.css') }}" rel="stylesheet">
-
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 

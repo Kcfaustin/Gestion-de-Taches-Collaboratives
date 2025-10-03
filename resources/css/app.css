@@ -2,6 +2,167 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Professional Modern Theme */
+:root {
+    /* Modern Color Palette */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --info-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+    /* Spacing & Layout */
+    --border-radius-lg: 16px;
+    --border-radius-md: 12px;
+    --border-radius-sm: 8px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+    /* Typography */
+    --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+}
+
+/* Badge and icon fixes */
+.badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+}
+
+.badge i {
+    display: inline-block !important;
+    opacity: 1 !important;
+    color: inherit !important;
+}
+
+/* Stats icons visibility enhancement */
+.stats-counter i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+}
+
+/* Auth page icons enhancement */
+.bi {
+    display: inline-block !important;
+    opacity: 1 !important;
+}
+
+/* Modern card styles */
+.card {
+    border: none !important;
+    border-radius: var(--border-radius-md) !important;
+    box-shadow: var(--shadow-md) !important;
+    transition: all 0.3s ease !important;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Modern button styles */
+.btn {
+    border-radius: var(--border-radius-sm) !important;
+    font-weight: var(--font-weight-medium) !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+}
+
+.btn-primary {
+    background: var(--primary-gradient) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Login page specific styles */
+.auth-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-header h2 {
+    color: #1f2937;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+/* Form styles */
+.form-control {
+    border-radius: var(--border-radius-sm) !important;
+    border: 2px solid #e5e7eb !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25) !important;
+}
+
+/* Input group styles */
+.input-group-text {
+    background: #f9fafb !important;
+    border: 2px solid #e5e7eb !important;
+    border-right: none !important;
+    border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm) !important;
+}
+
+.input-group .form-control {
+    border-left: none !important;
+    border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0 !important;
+}
+
+/* Remember me checkbox */
+.form-check-input:checked {
+    background-color: #667eea !important;
+    border-color: #667eea !important;
+}
+
+/* Links */
+.auth-links a {
+    color: #667eea !important;
+    text-decoration: none !important;
+    font-weight: var(--font-weight-medium) !important;
+    transition: color 0.3s ease !important;
+}
+
+.auth-links a:hover {
+    color: #5a67d8 !important;
+}
+
 /* Responsive Design Improvements */
 body {
     font-family: 'Inter', sans-serif;
