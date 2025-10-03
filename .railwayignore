@@ -1,0 +1,9 @@
+Procfile
+app.json
+render.yaml
+vercel.json
+deploy-heroku.sh
+HEROKU_DEPLOY.md
+render-start.sh
+vercel-build.sh
+.vercelignore

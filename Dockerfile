@@ -1,4 +1,4 @@
-# Utiliser l'image PHP officielle
+# Utiliser l'image PHP officielle (PAS Apache/Heroku)
 FROM php:8.2-cli
 
 # Installer les dépendances système
