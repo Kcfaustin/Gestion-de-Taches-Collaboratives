@@ -19,9 +19,9 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-// Health check endpoint for Railway
+// Health check endpoint for Railway - ultra simple
 Route::get('/health', function () {
-    return response()->json(['status' => 'ok', 'timestamp' => now()]);
+    return response()->json(['status' => 'ok']);
 });
 
 

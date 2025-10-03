@@ -18,12 +18,12 @@ return Application::configure(basePath: dirname(__DIR__))
             'force.https' => \App\Http\Middleware\ForceHttps::class,
         ]);
         
-        // Force HTTPS globally in production
-        if (($_ENV['APP_ENV'] ?? 'local') === 'production') {
-            $middleware->web(append: [
-                \App\Http\Middleware\ForceHttps::class,
-            ]);
-        }
+        // Force HTTPS globally in production - temporarily disabled for healthcheck
+        // if (($_ENV['APP_ENV'] ?? 'local') === 'production') {
+        //     $middleware->web(append: [
+        //         \App\Http\Middleware\ForceHttps::class,
+        //     ]);
+        // }
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
