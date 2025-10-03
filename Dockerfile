@@ -1,6 +1,5 @@
-# Railway Dockerfile - Do not use buildpack detection
-# Utiliser l'image PHP officielle avec Apache
-FROM php:8.2-apache
+# Utiliser l'image PHP officielle
+FROM php:8.2-cli
 
 # Installer les dépendances système
 RUN apt-get update && apt-get install -y \
@@ -24,7 +23,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs
 
 # Définir le répertoire de travail
-WORKDIR /var/www/html
+WORKDIR /app
 
 # Copier les fichiers
 COPY . .
@@ -38,17 +37,8 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts && \
 RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache
 
-# Configurer Apache
-RUN a2enmod rewrite
-RUN echo '<Directory /var/www/html>' >> /etc/apache2/apache2.conf && \
-    echo '    AllowOverride All' >> /etc/apache2/apache2.conf && \
-    echo '</Directory>' >> /etc/apache2/apache2.conf
-
-# Configurer le DocumentRoot pour Laravel
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
-
 # Exposer le port
-EXPOSE 80
+EXPOSE 8000
 
-# Démarrer Apache
-CMD ["apache2-foreground"]
+# Démarrer l'application Laravel
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
