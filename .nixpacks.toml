@@ -15,7 +15,13 @@ cmds = [
     "php artisan config:cache",
     "php artisan route:cache",
     "php artisan view:cache",
-    "php artisan storage:link"
+    "php artisan storage:link",
+    "ls -la public/build/",
+    "cp -r public/build/* public/",
+    "mkdir -p public/build/.vite",
+    "cp public/build/.vite/manifest.json public/build/.vite/",
+    "ls -la public/build/.vite/",
+    "chmod -R 755 public/build"
 ]
 
 [start]

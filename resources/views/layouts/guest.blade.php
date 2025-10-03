@@ -26,8 +26,8 @@
 
         <!-- Scripts -->
         @if(app()->environment('production'))
-            <link rel="stylesheet" href="{{ asset('build/assets/app-Dydjg6F-.css') }}">
-            <script type="module" src="{{ asset('build/assets/js-K89dAo7v.js') }}"></script>
+            <link rel="stylesheet" href="{{ \App\Helpers\AssetHelper::getCssPath() }}">
+            <script type="module" src="{{ \App\Helpers\AssetHelper::getJsPath() }}"></script>
         @else
             @vite(['resources/css/app.css', 'resources/js/app.js'])
         @endif
