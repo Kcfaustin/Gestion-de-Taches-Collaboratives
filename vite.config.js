@@ -8,6 +8,22 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        outDir: 'public/build',
+        emptyOutDir: true,
+        manifest: true,
+        rollupOptions: {
+            input: {
+                app: 'resources/css/app.css',
+                js: 'resources/js/app.js'
+            }
+        }
+    },
+    server: {
+        hmr: {
+            host: 'localhost',
+        },
+    },
 });
 
 
