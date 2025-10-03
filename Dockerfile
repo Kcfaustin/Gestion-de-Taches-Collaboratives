@@ -1,4 +1,5 @@
-# Utiliser l'image PHP officielle
+# DO NOT USE BUILDPACK - USE DOCKER ONLY
+# Railway Dockerfile - Force Docker build, ignore buildpack detection
 FROM php:8.2-cli
 
 # Installer les dépendances système
