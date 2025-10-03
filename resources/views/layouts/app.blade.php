@@ -53,6 +53,7 @@
 
         <!-- Critical CSS for Dashboard and Forms -->
         @if(app()->environment('production'))
+            <link rel="stylesheet" href="{{ asset('css/production.css') }}">
             <style>
                 /* Form styles */
                 .form-control {
@@ -332,6 +333,11 @@
 
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Production JavaScript -->
+        @if(app()->environment('production'))
+            <script src="{{ asset('js/production.js') }}"></script>
+        @endif
 
         <!-- Scripts pushed by pages (DataTables, etc.) -->
         @stack('scripts')
