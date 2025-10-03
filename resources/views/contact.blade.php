@@ -9,20 +9,20 @@
     @if(app()->environment('production'))
         <!-- Fallback CSS - Try multiple paths -->
         @if(file_exists(public_path('build/assets/app-Dydjg6F-.css')))
-            <link rel="stylesheet" href="{{ asset('build/assets/app-Dydjg6F-.css') }}">
+            <link rel="stylesheet" href="{{ secure_asset('build/assets/app-Dydjg6F-.css') }}">
         @elseif(file_exists(public_path('build/assets/app.css')))
-            <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+            <link rel="stylesheet" href="{{ secure_asset('build/assets/app.css') }}">
         @elseif(file_exists(public_path('build/app.css')))
-            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            <link rel="stylesheet" href="{{ secure_asset('build/app.css') }}">
         @endif
         
         <!-- Fallback JS - Try multiple paths -->
         @if(file_exists(public_path('build/assets/js-K89dAo7v.js')))
-            <script type="module" src="{{ asset('build/assets/js-K89dAo7v.js') }}"></script>
+            <script type="module" src="{{ secure_asset('build/assets/js-K89dAo7v.js') }}"></script>
         @elseif(file_exists(public_path('build/assets/js.js')))
-            <script type="module" src="{{ asset('build/assets/js.js') }}"></script>
+            <script type="module" src="{{ secure_asset('build/assets/js.js') }}"></script>
         @elseif(file_exists(public_path('build/js.js')))
-            <script type="module" src="{{ asset('build/js.js') }}"></script>
+            <script type="module" src="{{ secure_asset('build/js.js') }}"></script>
         @endif
     @else
         @vite(['resources/css/app.css', 'resources/js/app.js'])

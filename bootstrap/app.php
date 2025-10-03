@@ -15,7 +15,15 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware -> alias ([
             'admin' => \App\Http\Middleware\Admin::class,
+            'force.https' => \App\Http\Middleware\ForceHttps::class,
         ]);
+        
+        // Force HTTPS globally in production
+        if (config('app.env') === 'production') {
+            $middleware->web(append: [
+                \App\Http\Middleware\ForceHttps::class,
+            ]);
+        }
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
