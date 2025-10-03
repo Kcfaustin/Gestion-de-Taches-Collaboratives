@@ -6,8 +6,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="{{ asset('css/modern-theme.css') }}" rel="stylesheet">
-    @vite('resources/css/app.css') {{-- Inclure votre CSS --}}
-    @vite('resources/js/app.js')   {{-- Inclure votre JavaScript --}}
+    <!-- Scripts -->
+    @if(app()->environment('production'))
+        <!-- Fallback CSS - Try multiple paths -->
+        @if(file_exists(public_path('build/assets/app-Dydjg6F-.css')))
+            <link rel="stylesheet" href="{{ asset('build/assets/app-Dydjg6F-.css') }}">
+        @elseif(file_exists(public_path('build/assets/app.css')))
+            <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+        @elseif(file_exists(public_path('build/app.css')))
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        @endif
+        
+        <!-- Fallback JS - Try multiple paths -->
+        @if(file_exists(public_path('build/assets/js-K89dAo7v.js')))
+            <script type="module" src="{{ asset('build/assets/js-K89dAo7v.js') }}"></script>
+        @elseif(file_exists(public_path('build/assets/js.js')))
+            <script type="module" src="{{ asset('build/assets/js.js') }}"></script>
+        @elseif(file_exists(public_path('build/js.js')))
+            <script type="module" src="{{ asset('build/js.js') }}"></script>
+        @endif
+    @else
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
 
 <body class="bg-gray-100 text-gray-900">
