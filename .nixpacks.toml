@@ -17,9 +17,9 @@ cmds = [
     "chmod -R 755 public/build",
     "ls -la public/build",
     "cp -r public/build/* public/",
-    "mkdir -p public/build",
     "cp public/build/.vite/manifest.json public/build/manifest.json",
-    "ls -la public/build/"
+    "ls -la public/build/",
+    "cat public/build/manifest.json"
 ]
 
 [start]
