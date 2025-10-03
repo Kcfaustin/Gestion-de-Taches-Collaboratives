@@ -35,8 +35,12 @@ RUN composer run-script post-autoload-dump
 # Installer les dépendances Node.js et compiler les assets
 RUN npm install && npm run build
 
-# Exposer le port Railway
-EXPOSE $PORT
+# Copier le script de démarrage
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
-# Commande de démarrage avec migrations et seeding
-CMD ["sh", "-c", "php artisan migrate --force && php artisan db:seed && php artisan serve --host=0.0.0.0 --port=$PORT"]
+# Exposer le port Railway
+EXPOSE 8000
+
+# Commande de démarrage
+CMD ["/usr/local/bin/start.sh"]
