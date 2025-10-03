@@ -11,4 +11,3 @@ storage/framework/views/*
 bootstrap/cache/*
 tests
 .phpunit.cache
-vendor
