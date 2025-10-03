@@ -19,7 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         
         // Force HTTPS globally in production
-        if (app()->environment('production')) {
+        if (($_ENV['APP_ENV'] ?? 'local') === 'production') {
             $middleware->web(append: [
                 \App\Http\Middleware\ForceHttps::class,
             ]);
