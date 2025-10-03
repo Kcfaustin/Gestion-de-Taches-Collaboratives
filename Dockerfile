@@ -37,8 +37,13 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts && \
 RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache
 
-# Exposer le port
+# Exposer le port (Railway définit le port via $PORT)
 EXPOSE 8000
 
+# Créer un script de démarrage
+RUN echo '#!/bin/bash' > /app/start.sh && \
+    echo 'php artisan serve --host=0.0.0.0 --port=${PORT:-8000}' >> /app/start.sh && \
+    chmod +x /app/start.sh
+
 # Démarrer l'application Laravel
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+CMD ["/app/start.sh"]
