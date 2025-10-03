@@ -1,9 +1,20 @@
-Procfile
-app.json
-render.yaml
-vercel.json
-deploy-heroku.sh
-HEROKU_DEPLOY.md
-render-start.sh
-vercel-build.sh
-.vercelignore
+# Ignore composer files to prevent Heroku buildpack detection
+composer.json
+composer.lock
+vendor/
+
+# Ignore PHP files that might trigger buildpack detection
+*.php
+app/
+bootstrap/
+config/
+database/
+resources/
+routes/
+storage/
+tests/
+
+# Keep only what's needed for Docker
+Dockerfile
+.dockerignore
+railway.toml

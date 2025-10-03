@@ -1,3 +1,4 @@
+# Railway Dockerfile - Do not use buildpack detection
 # Utiliser l'image PHP officielle avec Apache
 FROM php:8.2-apache
 
