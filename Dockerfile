@@ -1,4 +1,4 @@
-# Utiliser l'image PHP officielle (PAS Apache/Heroku)
+# Utiliser l'image PHP officielle
 FROM php:8.2-cli
 
 # Installer les dépendances système
@@ -7,11 +7,13 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
+    libonig-dev \
+    libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Installer les extensions PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql zip gd
+    && docker-php-ext-install pdo pdo_mysql zip gd mbstring xml
 
 # Installer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -31,8 +33,12 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts && \
     composer run-script post-autoload-dump && \
     npm install && npm run build
 
+# Créer le répertoire storage et donner les permissions
+RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache && \
+    chmod -R 775 storage bootstrap/cache
+
 # Exposer le port
 EXPOSE 8000
 
-# Démarrer l'application
+# Démarrer l'application Laravel
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

@@ -197,9 +197,9 @@
         @if($projects->hasPages())
         <div class="row mt-4">
             <div class="col-12">
-                <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center">
                     {{ $projects->links() }}
-                </div>
+                    </div>
             </div>
         </div>
         @endif

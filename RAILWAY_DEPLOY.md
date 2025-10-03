@@ -1,107 +1,100 @@
-# 🚀 Déploiement sur Railway
+# Déploiement sur Railway
 
-## 📋 Prérequis
+## Configuration requise
 
 1. **Compte Railway** : Créez un compte sur [railway.app](https://railway.app)
-2. **GitHub** : Votre code doit être sur GitHub
-3. **Base de données** : Railway fournit PostgreSQL gratuitement
+2. **Base de données MySQL** : Utilisez MySQL à distance (ex: Hostinger)
 
-## 🚀 Déploiement automatique
+## Étapes de déploiement
 
-### 1. **Créer un projet Railway :**
-- Allez sur [railway.app](https://railway.app)
-- Cliquez sur "New Project"
-- Sélectionnez "Deploy from GitHub repo"
-- Choisissez votre repository `Gestion-de-Taches-Collaboratives`
-
-### 2. **Configuration automatique :**
-Railway va automatiquement :
-- ✅ Détecter que c'est un projet Laravel
-- ✅ Installer les dépendances PHP
-- ✅ Configurer le serveur web
-- ✅ Utiliser votre base de données MySQL Hostinger
-
-### 3. **Variables d'environnement :**
-Configurez ces variables dans Railway :
+### 1. Préparer le projet
 
 ```bash
+# Installer les dépendances
+composer install --no-dev --optimize-autoloader
+npm install
+npm run build
+
+# Générer la clé d'application
+php artisan key:generate
+```
+
+### 2. Déployer sur Railway
+
+1. Connectez votre repository GitHub à Railway
+2. Railway détectera automatiquement le Dockerfile
+3. Configurez la connexion à votre base de données MySQL Hostinger
+4. Configurez les variables d'environnement
+
+### 3. Configuration MySQL Hostinger
+
+1. **Connectez-vous à votre panneau Hostinger**
+2. **Allez dans "Bases de données MySQL"**
+3. **Notez les informations de connexion :**
+   - Nom d'hôte (ex: mysql.hostinger.com)
+   - Nom de la base de données
+   - Nom d'utilisateur
+   - Mot de passe
+   - Port (généralement 3306)
+
+### 4. Variables d'environnement
+
+Configurez ces variables dans Railway :
+
+```
 APP_NAME=Laravel
 APP_ENV=production
-APP_KEY=base64:VOTRE_CLE_ICI
+APP_KEY=base64:your-generated-key
 APP_DEBUG=false
-APP_URL=https://votre-app.railway.app
+APP_URL=https://your-app.railway.app
 
-# Configuration MySQL Hostinger
 DB_CONNECTION=mysql
-DB_HOST=srv1427.hstgr.io
+DB_HOST=your-mysql-hostinger-host
 DB_PORT=3306
-DB_DATABASE=u320065801_gestiontache
-DB_USERNAME=u320065801_faustin14
-DB_PASSWORD=Evaluation2002
+DB_DATABASE=your-database-name
+DB_USERNAME=your-mysql-username
+DB_PASSWORD=your-mysql-password
 
 CACHE_DRIVER=file
 SESSION_DRIVER=file
 QUEUE_CONNECTION=sync
 ```
 
-### 4. **Migrations automatiques :**
-Les migrations et seeders s'exécutent automatiquement au démarrage grâce à la configuration `nixpacks.toml`.
+### 5. Migrations
 
-## 🌐 Accès à l'application
-
-- **URL** : `https://votre-app.railway.app`
-- **Admin** : `admin@example.com` / `password1234`
-
-## 🔧 Commandes utiles
+Après le déploiement, exécutez les migrations :
 
 ```bash
-# Voir les logs
-railway logs
-
-# Accéder à la console
-railway shell
-
-# Redémarrer l'application
-railway restart
-
-# Voir les variables d'environnement
-railway variables
+php artisan migrate
 ```
 
-## 💰 Coûts
+### 6. Seeders (optionnel)
 
-- **Plan gratuit** : 500 heures/mois
-- **Base de données** : PostgreSQL gratuite
-- **Bande passante** : 100GB/mois gratuits
-- **Stockage** : 1GB gratuit
-
-## 🆘 Dépannage
-
-### Problème de base de données :
 ```bash
-railway shell
-php artisan migrate:status
-php artisan migrate --force
+php artisan db:seed
 ```
 
-### Problème de cache :
-```bash
-railway shell
-php artisan config:clear
-php artisan cache:clear
-php artisan view:clear
-```
+## Structure des fichiers
 
-### Voir les erreurs :
-```bash
-railway logs --tail
-```
+- `Dockerfile` : Configuration Docker pour Railway
+- `railway.toml` : Configuration Railway spécifique
+- `public/` : Fichiers publics Laravel
+- `storage/` : Stockage des fichiers (logs, cache, etc.)
 
-## 🎯 Avantages Railway
+## Dépannage
 
-- ✅ **100% gratuit** jusqu'à 500h/mois
-- ✅ **Base de données incluse**
-- ✅ **Déploiement automatique**
-- ✅ **Interface simple**
-- ✅ **Logs en temps réel**
-- ✅ **Variables d'environnement faciles**
+### Problèmes courants
+
+1. **Erreur de permissions** : Vérifiez que les dossiers `storage/` et `bootstrap/cache/` ont les bonnes permissions
+2. **Base de données** : Vérifiez que la connexion MySQL Hostinger est correcte
+3. **Clé d'application** : Assurez-vous que `APP_KEY` est définie
+4. **Connexion MySQL** : Vérifiez que l'IP de Railway est autorisée dans Hostinger
+
+### Logs
+
+Consultez les logs dans le dashboard Railway pour diagnostiquer les problèmes.
+
+## Support
+
+- [Documentation Railway](https://docs.railway.app)
+- [Documentation Laravel](https://laravel.com/docs)
