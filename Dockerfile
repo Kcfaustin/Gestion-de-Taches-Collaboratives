@@ -1,7 +1,7 @@
-# Utiliser l'image PHP officielle avec Composer
+# Utiliser l'image PHP officielle
 FROM php:8.2-cli
 
-# Installer les dépendances système nécessaires
+# Installer les dépendances système
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     libfreetype6-dev \
@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Installer les extensions PHP nécessaires
+# Installer les extensions PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_mysql zip gd
 
@@ -23,24 +23,16 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Copier les fichiers de l'application
+# Copier les fichiers
 COPY . .
 
-# Installer les dépendances PHP (maintenant que les extensions sont installées)
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+# Installer les dépendances
+RUN composer install --no-dev --optimize-autoloader --no-scripts && \
+    composer run-script post-autoload-dump && \
+    npm install && npm run build
 
-# Exécuter les scripts post-installation
-RUN composer run-script post-autoload-dump
-
-# Installer les dépendances Node.js et compiler les assets
-RUN npm install && npm run build
-
-# Copier le script de démarrage
-COPY start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
-
-# Exposer le port Railway
+# Exposer le port
 EXPOSE 8000
 
-# Commande de démarrage
-CMD ["/usr/local/bin/start.sh"]
+# Démarrer l'application
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
