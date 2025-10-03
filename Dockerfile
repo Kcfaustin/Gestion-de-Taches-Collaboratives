@@ -41,11 +41,5 @@ RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions sto
 # Exposer le port (Railway définit le port via $PORT)
 EXPOSE 8000
 
-# Créer un script de démarrage qui gère la variable PORT
-RUN echo '#!/bin/bash' > /app/start.sh && \
-    echo 'echo "Starting Laravel on port: ${PORT:-8000}"' >> /app/start.sh && \
-    echo 'php artisan serve --host=0.0.0.0 --port=${PORT:-8000}' >> /app/start.sh && \
-    chmod +x /app/start.sh
-
-# Démarrer l'application
-CMD ["/app/start.sh"]
+# L'application sera démarrée via railway.toml startCommand
+# Pas de CMD pour éviter la détection du buildpack
