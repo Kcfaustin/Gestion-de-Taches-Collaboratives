@@ -20,12 +20,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         
         <!-- Scripts -->
-        @if(app()->environment('production'))
-            <link rel="stylesheet" href="{{ asset('build/assets/app-Dydjg6F-.css') }}">
-            <script type="module" src="{{ asset('build/assets/js-K89dAo7v.js') }}"></script>
-        @else
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Meta tags for better mobile experience -->
         <meta name="theme-color" content="#0d6efd">
