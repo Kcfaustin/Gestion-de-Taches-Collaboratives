@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["nodejs"]
+nixPkgs = ["nodejs-18_x"]
 
 [phases.install]
 cmds = [
@@ -15,11 +15,8 @@ cmds = [
     "php artisan view:cache",
     "php artisan storage:link",
     "chmod -R 755 public/build",
-    "ls -la public/build",
     "cp -r public/build/* public/",
-    "cp public/build/.vite/manifest.json public/build/manifest.json",
-    "ls -la public/build/",
-    "cat public/build/manifest.json"
+    "cp public/build/.vite/manifest.json public/build/manifest.json"
 ]
 
 [start]
